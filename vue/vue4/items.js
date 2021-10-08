@@ -21,6 +21,15 @@ var vm = new Vue({
   el: '#app',
   data: { // dataプロパティ
     items: items
+  },
+  filters: { //この節で追加したフィルタの定義
+    numberWithDelimiter: function (value) {
+      if (!value) {
+        return '0'
+      }
+      return value.toString().replace(/(\d)(?=(\d{3})+$)/g, '$1,')
+      // 3桁でコンマをつける
+    }
   }
 })
 // JSiddleでコンソールからvmにアクセスするための対応
